@@ -1,0 +1,50 @@
+<style>
+  body {
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 20px;
+  }
+ 
+</style>
+
+<body> 
+<div class="form-group" >
+  <h2 for="cat" >Category</h2> &emsp;&emsp;  
+  <form #fff="ngForm"  >
+  <table  class="table table-responsive" >
+    <tr> 
+   <td>     
+   Enter Category Name: <input type="text" id="cat" [(ngModel)]="ct1" 
+   placeholder="Enter Category"
+     style="margin-left: 20px;" required #tx="ngModel" name="textt">
+    <span *ngIf="tx.errors && tx.errors.required"> Enter value first</span>  
+  </td>
+    
+</tr>
+    
+<tr><td></td><td> <input type="button" class="btn btn-secondary"
+   value="Add Category" (click)="inscat()"></td>
+   
+</tr>   
+ </table> </form>
+  </div>
+  <table  border="1" class="table table-responsive">
+     <th>Category Id</th>
+    <th>Category Name</th>
+ <tr *ngFor="let x of discat" >
+    <td *ngIf="global!=x._id ;else tmp " >{{x._id}}</td>
+  <td *ngIf="global!=x._id">{{x.cname}}</td>
+<td *ngIf="global!=x._id"><input type="button" value="Update" 
+  class="btn btn-primary"  (click)="funupdate(x)">&nbsp;
+  <span *ngIf="x.active==1"><input type="button" value="Inactive" class="btn btn-warning" 
+  (click)="funInactive(x,0)"></span>&nbsp;
+ <span *ngIf="x.active==0"><input type="button" value="Active" class="btn btn-success" 
+  (click)="funactive(x,0)"></span></td></tr> 
+  </table>
+  <ng-template #tmp>
+    <td>{{global}}</td>
+    <td><input type="text" [(ngModel)]="txt2"></td>
+    <td><input type="button" value="Save" class="btn btn-primary" 
+    (click)="funsave()">&nbsp;
+      <input type="button" value="Cancel" class="btn btn-warning" (click)="global=0"></td>
+  </ng-template>
+</body>

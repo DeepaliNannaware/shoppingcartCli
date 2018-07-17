@@ -1,0 +1,22 @@
+{
+          "/catname/*":{
+                    "target":"http://localhost:2004",
+                    "secure":true
+          },
+          "/subname/*":{
+                    "target":"http://localhost:2004",
+                    "secure":true
+          },
+          "/ssbname/*":{
+                    "target":"http://localhost:2004",
+                    "secure":true
+          },
+          "/brand/*":{
+                    "target":"http://localhost:2004",
+                    "secure":true
+          },
+          "/product/*":{
+                    "target":"http://localhost:2004",
+                    "secure":true
+          }
+}

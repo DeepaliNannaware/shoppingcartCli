@@ -1,0 +1,126 @@
+<style>
+    body{
+      font-family: 'Times New Roman', Times, serif;
+                              font-size: 20px;
+      
+    }
+  </style>
+  <body>
+<div class="from group">
+<h2 for="pro">Product</h2>
+<form #fff="ngForm" >
+<table class="table table-responsive">
+  <tr>
+  <td>
+Select Category:<select class="from-control"
+style="width: 300px" name="drop1" [(ngModel)]="drpcat" (change)="dispalysscat()">
+<option *ngFor="let x of discat" value="{{x._id}}">{{x.cname}}</option>
+</select></td>
+</tr>
+<tr>
+<td>
+Select Subcategory:<select class="from-control" style="width: 300px" name="drop2"
+ [(ngModel)]="drps" (change)="dispsscat()" >
+<option *ngFor="let x of disscat" value="{{x._id}}">{{x.sname}}</option></select>
+</td>
+</tr>
+<tr>
+<td>
+    Select Sub-Sub-Category:<select class="from-control"
+    style="width: 300px" name="drop3" [(ngModel)]="drpss" (chnage)="disbrand()">
+    <option *ngFor="let x of dissscat1" value="{{x._id}}">{{x.ssname}}</option></select>
+    </td>
+    </tr>
+    <tr>
+    <td>
+ Select Brand:<select class="from-control"
+ style="width: 300px" name="drop4" [(ngModel)]="drpb">
+<option *ngFor="let x of bget" value="{{x._id}}">{{x.bname}}</option></select>
+</td>
+</tr>
+<tr>
+<td>
+Product Name:<input type="text" id="pp" [(ngModel)]="pro1"
+placeholder="Enter Product Name"
+style="margin-left: 20px;" required #tx="ngModel" name="brtext">
+</td></tr>
+<tr>
+<td>
+Product Price:<input type="number" id="pp" [(ngModel)]="pro2"
+placeholder="Enter Product Price"
+style="margin-left: 20px;" required #tx="ngModel" name="brtext">
+</td></tr>
+<tr>
+  <td>Product Color:<input type="color" id="pp" [(ngModel)]="pro3"
+    placeholder="color"
+    style="margin-left: 20px;" required #tx="ngModel" name="brtext">
+    </td></tr>
+<tr>
+<td>
+Product Qty:<input type="number" id="pp" [(ngModel)]="pro4"
+placeholder="Enter Product Qty"
+style="margin-left: 20px;" required #tx="ngModel" name="brtext">
+</td></tr>
+<tr>
+<td>
+Product Rating:<input type="text" id="pp" [(ngModel)]="pro5"
+placeholder="Enter Product Rating"
+style="margin-left: 30px;" required #tx="ngModel" name="brtext">
+</td></tr>
+
+<tr>
+<td>Product Description:<input type="textarea" id="pp" [(ngModel)]="pro6"
+  placeholder="Enter Product Description"
+  style="margin-left: 30px;" required #tx="ngModel" name="brtext">
+  </td></tr>
+  <tr>
+  <td>Product Status:<select [(ngModel)]="pro7"  required #state="ngModel" name="prostate">
+        <option>New Arrival</option>
+        <option>Upcomming</option>
+        <option>Regular</option>
+ </select>
+<span *ngIf="state.errors && state.errors.required">Select Producte Status</span>
+</td>
+</tr>
+<tr>
+         
+  
+  <td>
+    Select Image: <form method="post" action="http://localhost:2020/imgupload" enctype="multipart/form-data" id="frmimg">
+      <input type="file" name="imgnm" id="t7"/>
+</form>
+</td>
+</tr>
+
+<td></td><td>
+<input type="button" value="Add Product" class="btn btn-secondary" 
+(click)="inspro()">
+</td>
+</table>
+<table border="1" class="table table-responsive">
+<tr><th>Index</th>
+<th>Category Name</th>
+<th>Sub-Category Name </th>
+<th>Sub-Sub-Category Name</th>
+<th>Brand-Name</th>
+<th>Product-Name</th>
+</tr>
+<tr *ngFor="let x of dispro, let i=index">
+<td *ngIf="global!=x._id">{{i+1}}</td>
+<td *ngIf="global!=x._id">{{x.cname}}</td>
+<td *ngIf="global!=x._id">{{x.sname}}</td>
+<td *ngIf="global!=x._id">{{x.ssname}}</td>
+<td *ngIf="global!=x._id">{{x.bname}}</td>
+<td *ngIf="global!=x._id">{{x.pname}}</td>
+<td *ngIf="global!=x._id"><input type="button" value="Update" class="btn btn-primary"
+  (click)="funupdate(x)">&nbsp;
+  <span *ngIf="x.active==1"><input type="button" value="Inactive" class="btn btn-warning" 
+    (click)="funInactive(x,0)"></span>&nbsp;
+   <span *ngIf="x.active==0"><input type="button" value="Active" class="btn btn-success" 
+    (click)="funactive(x,0)"></span></td>
+</tr>
+</table>
+</form>
+</div>
+<input type="button" value ="click" (click)="dispsscat()">
+  </body>

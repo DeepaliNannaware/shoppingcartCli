@@ -1,0 +1,76 @@
+<style>
+  body{
+    font-family: 'Times New Roman', Times, serif;
+                            font-size: 20px;
+                    
+  }
+</style>
+<body>
+<div class="form-group">
+  <h2 for="SSubcat">Sub Sub Category </h2>
+  <form #fff="ngForm"  >
+      <table class="table table-responsive">
+          <td>
+Select Category:<select class="from-control"
+ style="width: 300px"name="drop1" [(ngModel)]="drpcat" (change)="dispalysscat()">
+<option *ngFor="let x of discat" value ="{{x._id}}">{{x.cname}}</option>
+</select></td><br><td>
+Select Sub-Category:<select class="from-control" style="width: 300px" name="drop2"
+ [(ngModel)]="drps">
+  <option *ngFor="let x of disscat" value="{{x._id}}">{{x.sname}}</option></select></td>
+<tr>
+  <td>
+    Enter Sub-Sub Category:<input type="text" id="sscat" [(ngModel)]="sss1"
+    placeholder="Enter Sub-SubCategory"
+ style="margin-left: 20px;" required #tx="ngModel" name="sstext">  
+  </td>
+</tr>
+<tr>
+  <td>
+  <input type="button" value="Add SubSubCategory" class="btn btn-secondary"
+   (click)="inssscat()">
+</td>
+</tr>
+</table>
+<table border="1px" class="table table-responsive">
+  <tr>
+    
+      <th>Sr.No.</th>
+      <th>Category-Name</th>
+      <th>Sub-CategoryName</th>
+      <th>Sub-Sub-CategoryName</th>
+    
+  </tr>
+  <tr *ngFor="let x of sscat;let i=index">
+   <td *ngIf=" global!=x._id; else tmp">{{i+1}}</td>
+    <td *ngIf=" global!=x._id">{{x.cname}}</td>
+    <td *ngIf=" global!=x._id">{{x.sname}}</td>
+    <td *ngIf=" global!=x._id">{{x.ssname}}</td>
+    <td *ngIf=" global!=x._id"><input type="button" value="Update" 
+    class="btn btn-primary"(click)="funupdate(x)">&nbsp;
+    <span *ngIf="x.active==1"><input type="button" value="Inactive" class="btn btn-warning" 
+      (click)="funInactive(x,0)"></span>&nbsp;
+     <span *ngIf="x.active==0"><input type="button" value="Active" class="btn btn-success" 
+      (click)="funactive(x,0)"></span></td>
+  </tr>
+</table>
+<ng-template #tmp>
+   
+      <td>{{global}}</td>
+      <td><select class="from-control"
+        style="width: 300px"name="drop1" [(ngModel)]="drpcat1" (change)="dispalysscat1()">
+       <option *ngFor="let x of discat1" value ="{{x._id}}">{{x.cname}}</option>
+       </select></td>
+      <td><select class="from-control" style="width: 300px" name="drop2"
+        [(ngModel)]="drps1">
+         <option *ngFor="let x of disscat1" value="{{x._id}}">{{x.sname}}</option></select></td>
+             
+    <td><input type="text" name="ftyty" [(ngModel)]="t1"></td>
+    <td><input type="button" value="Save" class="btn btn-primary"  (click)="funsave()">&nbsp;
+    <input type="button" value="Cancel" class="btn btn-warning" (click)="global=0" ></td>
+
+    </ng-template>
+  
+</form>
+</div>
+</body>
